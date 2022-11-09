@@ -3,21 +3,21 @@ package pizzaManager;
 public class NYPizza implements PizzaFactory{
     @Override
     public Pizza createDeluxe() {
-        return null;
+        return new Deluxe(this);
     }
 
     @Override
     public Pizza createMeatzza() {
-        return null;
+        return new Meatzza(this);
     }
 
     @Override
     public Pizza createBBQChicken() {
-        return null;
+        return new BBQ_Chicken(this);
     }
 
     @Override
     public Pizza createBuildYourOwn() {
-        return null;
+        return new BuildYourOwn(this);
     }
 }

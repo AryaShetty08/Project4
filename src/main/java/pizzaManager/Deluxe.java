@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Deluxe extends Pizza {
-    public Deluxe (PizzaFactory pizzaFactory, Size size){
+    public Deluxe (PizzaFactory pizzaFactory){
         if (pizzaFactory instanceof NYPizza){
             crust = Crust.BROOKLYN;
         }
@@ -15,7 +15,6 @@ public class Deluxe extends Pizza {
             crust = null;
         }
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.GREEN_PEPPER, Topping.ONION, Topping.MUSHROOM));
-        this.size = size;
     }
 
     @Override

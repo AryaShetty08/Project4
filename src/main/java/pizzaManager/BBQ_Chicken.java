@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BBQ_Chicken extends Pizza{
-    public BBQ_Chicken (PizzaFactory pizzaFactory, Size size){
+    public BBQ_Chicken (PizzaFactory pizzaFactory){
         if (pizzaFactory instanceof NYPizza){
             crust = Crust.THIN;
         }
@@ -15,7 +15,6 @@ public class BBQ_Chicken extends Pizza{
             crust = null;
         }
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.BBQ_CHICKEN, Topping.GREEN_PEPPER, Topping.PROVOLONE, Topping.CHEDDAR));
-        this.size = size;
     }
 
     @Override
@@ -40,7 +39,14 @@ public class BBQ_Chicken extends Pizza{
             case LARGE -> {
                 return 17.99;
             }
+            default -> {
+                return 0;
+            }
         }
-        return 0;
+    }
+
+    @Override
+    public void setSize(Size size) {
+        this.size = size;
     }
 }
