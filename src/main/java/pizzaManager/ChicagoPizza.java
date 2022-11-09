@@ -1,6 +1,6 @@
 package pizzaManager;
 
-public class ChicagoPizza implements PizzaFactory{
+public class ChicagoPizza implements PizzaFactory {
     @Override
     public Pizza createDeluxe() {
         return null;

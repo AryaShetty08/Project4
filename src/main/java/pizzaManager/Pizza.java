@@ -3,8 +3,8 @@ package pizzaManager;
 import java.util.ArrayList;
 
 public abstract class Pizza implements Customizable{
-    private ArrayList<Topping> toppings;
-    private Crust crust;
-    private Size size;
+    protected ArrayList<Topping> toppings;
+    protected Crust crust;
+    protected Size size;
     public abstract double price();
 }
