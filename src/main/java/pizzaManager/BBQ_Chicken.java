@@ -3,18 +3,18 @@ package pizzaManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Deluxe extends Pizza {
-    public Deluxe (PizzaFactory pizzaFactory, Size size){
+public class BBQ_Chicken extends Pizza{
+    public BBQ_Chicken (PizzaFactory pizzaFactory, Size size){
         if (pizzaFactory instanceof NYPizza){
-            crust = Crust.BROOKLYN;
+            crust = Crust.THIN;
         }
         else if (pizzaFactory instanceof ChicagoPizza){
-            crust = Crust.DEEP_DISH;
+            crust = Crust.PAN;
         }
         else {
             crust = null;
         }
-        toppings = new ArrayList<Topping>(Arrays.asList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.GREEN_PEPPER, Topping.ONION, Topping.MUSHROOM));
+        toppings = new ArrayList<Topping>(Arrays.asList(Topping.BBQ_CHICKEN, Topping.GREEN_PEPPER, Topping.PROVOLONE, Topping.CHEDDAR));
         this.size = size;
     }
 
@@ -32,22 +32,15 @@ public class Deluxe extends Pizza {
     public double price() {
         switch (size) {
             case SMALL -> {
-                return 14.99;
+                return 13.99;
             }
             case MEDIUM -> {
-                return 16.99;
+                return 15.99;
             }
             case LARGE -> {
-                return 18.99;
-            }
-            default -> {
-                return 0;
+                return 17.99;
             }
         }
-    }
-
-    @Override
-    public void setSize(Size size) {
-        this.size = size;
+        return 0;
     }
 }

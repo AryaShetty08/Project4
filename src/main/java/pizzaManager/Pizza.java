@@ -7,4 +7,5 @@ public abstract class Pizza implements Customizable{
     protected Crust crust;
     protected Size size;
     public abstract double price();
+    public abstract void setSize(Size size);
 }
