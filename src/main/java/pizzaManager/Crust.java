@@ -6,6 +6,6 @@ public enum Crust {
     PAN,
     THIN,
     STUFFED,
-    HAND_TOSSED,
+    HAND_TOSSED
 
 }
