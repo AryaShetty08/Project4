@@ -43,14 +43,12 @@ public class ChicagoStylePizzaOrderingController {
     @FXML
     public void initialize() {
         pizzaFlavor.getItems().addAll("Build Your Own!", "Deluxe!", "BBQ Chicken!", "Meatzza");
-//        pizzaFlavor.valueProperty().addListener(new ChangeListener<String>() {
-//            @Override
-//            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-//                switch (pizzaFlavor.getSelectionModel().getSelectedItem())
-//                    case "Deluxe!"
-//                    crustType.setText("Balls");
-//            }
-//        });
+        String l = new String("Deluxe!");
+        pizzaFlavor.setOnAction((actionEvent) ->{
+            if(l.equals(pizzaFlavor.getSelectionModel().getSelectedItem())){
+                System.out.println("CheckBox Action (selected: " + ")");
+            }
+        });
 
         ChicagoStyleTemp.setImage(new Image("chicagopizzaimage.jpg"));
 
