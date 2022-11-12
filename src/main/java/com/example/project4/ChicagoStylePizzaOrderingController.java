@@ -43,14 +43,24 @@ public class ChicagoStylePizzaOrderingController {
     @FXML
     public void initialize() {
         pizzaFlavor.getItems().addAll("Build Your Own!", "Deluxe!", "BBQ Chicken!", "Meatzza");
-        String l = new String("Deluxe!");
+
         pizzaFlavor.setOnAction((actionEvent) ->{
-            if(l.equals(pizzaFlavor.getSelectionModel().getSelectedItem())){
-                System.out.println("CheckBox Action (selected: " + ")");
+            switch (pizzaFlavor.getSelectionModel().getSelectedItem()){
+                case "Deluxe!":
+                    crustType.setText("Deluxe Hi");
+                    break;
+                case "BBQ Chicken!":
+                    crustType.setText("BBQ Hi");
+                    break;
+                case "Meatzza":
+                    crustType.setText("Meatzza Hi");
+                    break;
+                case "Build Your Own!":
+                    crustType.setText("Build Your Own Hi");
             }
         });
-
-        ChicagoStyleTemp.setImage(new Image("chicagopizzaimage.jpg"));
+        pizzaFlavor.getSelectionModel().select(1);
+        //ChicagoStyleTemp.setImage(new Image("chicagopizzaimage.jpg"));
 
     }
 
