@@ -17,6 +17,7 @@ public class BuildYourOwn extends Pizza{
         else {
             crust = null;
         }
+        size = Size.SMALL;
         toppings = new ArrayList<Topping>();
         numToppings = 0;
     }
@@ -26,7 +27,9 @@ public class BuildYourOwn extends Pizza{
         if (numToppings == 7){
             return false;
         }
-        toppings.add((Topping) obj);
+        if (!toppings.add((Topping) obj)){
+            return false;
+        }
         numToppings++;
         return true;
     }
@@ -44,13 +47,13 @@ public class BuildYourOwn extends Pizza{
     public double price() {
         switch (size) {
             case SMALL -> {
-                return 8.99 + (pricePerTopping*numToppings);
+                return Double.parseDouble(df.format(8.99 + (pricePerTopping*numToppings)));
             }
             case MEDIUM -> {
-                return 10.99 + (pricePerTopping*numToppings);
+                return Double.parseDouble(df.format(10.99 + (pricePerTopping*numToppings)));
             }
             case LARGE -> {
-                return 12.99 + (pricePerTopping*numToppings);
+                return Double.parseDouble(df.format(12.99 + (pricePerTopping*numToppings)));
             }
             default -> {
                 return 0;

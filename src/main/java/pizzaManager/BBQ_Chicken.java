@@ -14,6 +14,7 @@ public class BBQ_Chicken extends Pizza{
         else {
             crust = null;
         }
+        size = Size.SMALL;
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.BBQ_CHICKEN, Topping.GREEN_PEPPER, Topping.PROVOLONE, Topping.CHEDDAR));
     }
 

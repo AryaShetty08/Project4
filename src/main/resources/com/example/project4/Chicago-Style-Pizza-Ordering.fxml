@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="656.0" prefWidth="891.0" style="-fx-background-color: #fcba03;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.ChicagoStylePizzaOrderingController">
+<AnchorPane prefHeight="656.0" prefWidth="891.0" style="-fx-background-color: #fcba03;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.ChicagoStylePizzaOrderingController">
    <children>
       <Label layoutX="251.0" layoutY="14.0" text="Chicago Style Pizza">
          <font>
@@ -13,8 +13,8 @@
          </font>
       </Label>
       <ImageView fx:id="ChicagoStyleTemp" fitHeight="215.0" fitWidth="285.0" layoutX="446.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
-      <ChoiceBox fx:id="pizzaFlavor" layoutX="107.0" layoutY="166.0" onContextMenuRequested="#mouseClick" prefWidth="150.0" />
-      <RadioButton fx:id="smallPizza" layoutX="107.0" layoutY="232.0" mnemonicParsing="false" text="Small">
+      <ChoiceBox fx:id="pizzaFlavor" layoutX="107.0" layoutY="166.0" prefWidth="150.0" />
+      <RadioButton fx:id="smallPizza" layoutX="107.0" layoutY="232.0" mnemonicParsing="false" onAction="#sizeClick" text="Small">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
@@ -22,12 +22,12 @@
             <ToggleGroup fx:id="pizzaSize" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="largePizza" layoutX="300.0" layoutY="232.0" mnemonicParsing="false" text="Large" toggleGroup="$pizzaSize">
+      <RadioButton fx:id="largePizza" layoutX="300.0" layoutY="232.0" mnemonicParsing="false" onAction="#sizeClick" text="Large" toggleGroup="$pizzaSize">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="mediumPizza" layoutX="195.0" layoutY="232.0" mnemonicParsing="false" text="Medium" toggleGroup="$pizzaSize">
+      <RadioButton fx:id="mediumPizza" layoutX="195.0" layoutY="232.0" mnemonicParsing="false" onAction="#sizeClick" text="Medium" toggleGroup="$pizzaSize">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
@@ -50,12 +50,12 @@
          </font>
       </Label>
       <ListView fx:id="selectedTop" layoutX="467.0" layoutY="373.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="addTop" layoutX="355.0" layoutY="419.0" mnemonicParsing="false" text="&gt;&gt;">
+      <Button fx:id="addTop" layoutX="355.0" layoutY="419.0" mnemonicParsing="false" onAction="#addTopping" text="&gt;&gt;">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="removeTop" layoutX="355.0" layoutY="469.0" mnemonicParsing="false" text="&lt;&lt;">
+      <Button fx:id="removeTop" layoutX="355.0" layoutY="469.0" mnemonicParsing="false" onAction="#removeTopping" text="&lt;&lt;">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>

@@ -14,6 +14,7 @@ public class Meatzza extends Pizza{
         else {
             crust = null;
         }
+        size = Size.SMALL;
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.BEEF, Topping.HAM));
     }
 
@@ -48,5 +49,9 @@ public class Meatzza extends Pizza{
     @Override
     public void setSize(Size size) {
         this.size = size;
+    }
+
+    public ArrayList<Topping> getToppings(){
+        return toppings;
     }
 }

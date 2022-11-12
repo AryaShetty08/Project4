@@ -14,6 +14,7 @@ public class Deluxe extends Pizza {
         else {
             crust = null;
         }
+        size = Size.SMALL;
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.GREEN_PEPPER, Topping.ONION, Topping.MUSHROOM));
     }
 
@@ -48,5 +49,15 @@ public class Deluxe extends Pizza {
     @Override
     public void setSize(Size size) {
         this.size = size;
+    }
+
+    @Override
+    public Crust getCrust() {
+        return super.getCrust();
+    }
+
+    @Override
+    public ArrayList<Topping> getToppings() {
+        return super.getToppings();
     }
 }
