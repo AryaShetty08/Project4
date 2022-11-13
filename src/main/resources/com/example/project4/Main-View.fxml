@@ -12,7 +12,7 @@
             <Font name="Bell MT" size="48.0" />
          </font>
       </Label>
-      <ImageView fx:id="chicagoPizzaImage" fitHeight="215.0" fitWidth="285.0" layoutX="65.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="chicagoPizzaImage" fitHeight="215.0" fitWidth="285.0" layoutX="65.0" layoutY="130.0" onMouseClicked="#switchChicago" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="110.0" layoutY="345.0" text="Chicago Style Pizza">
          <font>
             <Font name="Bell MT" size="24.0" />
@@ -23,9 +23,9 @@
             <Font name="Bell MT" size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="NYPizzaImage" fitHeight="215.0" fitWidth="285.0" layoutX="542.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="StoreOrdersImage" fitHeight="215.0" fitWidth="285.0" layoutX="542.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="CurrentOrderImage" fitHeight="215.0" fitWidth="285.0" layoutX="65.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="NYPizzaImage" fitHeight="215.0" fitWidth="285.0" layoutX="542.0" layoutY="130.0" onMouseClicked="#switchNewYork" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="StoreOrdersImage" fitHeight="215.0" fitWidth="285.0" layoutX="542.0" layoutY="375.0" onMouseClicked="#switchStoreOrders" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="CurrentOrderImage" fitHeight="215.0" fitWidth="285.0" layoutX="65.0" layoutY="375.0" onMouseClicked="#switchCurrentOrder" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="136.0" layoutY="590.0" text="Current Order">
          <font>
             <Font name="Bell MT" size="24.0" />

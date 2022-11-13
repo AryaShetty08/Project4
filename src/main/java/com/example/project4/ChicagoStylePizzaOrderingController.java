@@ -69,7 +69,6 @@ public class ChicagoStylePizzaOrderingController {
             }
         });
         pizzaFlavor.getSelectionModel().select(0);
-        //ChicagoStyleTemp.setImage(new Image("chicagopizzaimage.jpg"));
     }
 
     @FXML
@@ -111,6 +110,7 @@ public class ChicagoStylePizzaOrderingController {
     }
 
     private void initializeDeluxe(){
+        ChicagoStyleTemp.setImage(new Image("deluxepizzaChicago.jpg"));
         orderInProgress = pizzaFactory.createDeluxe();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -123,6 +123,7 @@ public class ChicagoStylePizzaOrderingController {
     }
 
     private void initializeBBQ(){
+        ChicagoStyleTemp.setImage(new Image("BBQChickenChicago.jpg"));
         orderInProgress = pizzaFactory.createBBQChicken();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -135,6 +136,7 @@ public class ChicagoStylePizzaOrderingController {
     }
 
     private void initializeMeatzza(){
+        ChicagoStyleTemp.setImage(new Image("meatzzaChicago.jpg"));
         orderInProgress = pizzaFactory.createMeatzza();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -147,6 +149,7 @@ public class ChicagoStylePizzaOrderingController {
     }
 
     private void initializeBuildYourOwn(){
+        ChicagoStyleTemp.setImage(new Image("chicagopizzaimagebuildyourown.jpg"));
         orderInProgress = pizzaFactory.createBuildYourOwn();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
