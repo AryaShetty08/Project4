@@ -51,6 +51,7 @@ public class NewYorkStylePizzaOrderingController {
 
     @FXML
     public void initialize() {
+        CurrentOrderViewController currentController = new CurrentOrderViewController();
         pizzaFlavor.getItems().addAll("Build Your Own!", "Deluxe!", "BBQ Chicken!", "Meatzza");
         pizzaFlavor.setOnAction((actionEvent) ->{
             pizzaSize.selectToggle(smallPizza);

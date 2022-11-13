@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -45,9 +46,10 @@ public class ChicagoStylePizzaOrderingController {
     @FXML
     private Button addToOrder;
 
-    public ChicagoStylePizzaOrderingController(){
-        this.pizzaFactory = new ChicagoPizza();
-    }
+
+
+
+    public ChicagoStylePizzaOrderingController(){this.pizzaFactory = new ChicagoPizza();}
 
     @FXML
     public void initialize() {
@@ -169,5 +171,12 @@ public class ChicagoStylePizzaOrderingController {
             }
         }
         return selectedToppings;
+    }
+
+    @FXML
+    public void addToOrderClick(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Current-Order-View.fxml"));
+        CurrentOrderViewController currentController = loader.getController();
+        currentController.setOrderNumber(1);
     }
 }
