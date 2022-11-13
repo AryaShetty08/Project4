@@ -26,8 +26,19 @@ public class CurrentOrderViewController {
         NewYorkStylePizzaOrderingController newYorkController = new NewYorkStylePizzaOrderingController();
 
     }
-    
+
     public void setOrderNumber(int orderNum){
         orderNumber.setText(Integer.valueOf(orderNum).toString());
+    }
+    public void setPizzaOrder(){
+    }
+
+    public void setSubtotal(){
+    }
+
+    public void setSalesTax(){
+    }
+
+    public void setOrderTotal(){
     }
 }

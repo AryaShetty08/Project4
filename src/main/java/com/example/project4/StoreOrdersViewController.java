@@ -14,4 +14,9 @@ public class StoreOrdersViewController {
     @FXML
     private ChoiceBox<Integer> orderNumber;
 
+    public void setPizzaOrder(){
+    }
+
+    public void setOrderTotal(){
+    }
 }
