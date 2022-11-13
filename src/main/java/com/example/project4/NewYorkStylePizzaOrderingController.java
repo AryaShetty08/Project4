@@ -110,7 +110,7 @@ public class NewYorkStylePizzaOrderingController {
     }
 
     private void initializeDeluxe(){
-        NewYorkStyleTemp.setImage(new Image("deluxepizzaNewYork.png"));
+        NewYorkStyleTemp.setImage(new Image("deluxepizzaNewYork.png", 285, 215, false, false));
         orderInProgress = pizzaFactory.createDeluxe();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -123,7 +123,7 @@ public class NewYorkStylePizzaOrderingController {
     }
 
     private void initializeBBQ(){
-        NewYorkStyleTemp.setImage(new Image("BBQChickenNewYork.jpg"));
+        NewYorkStyleTemp.setImage(new Image("BBQChickenNewYork.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createBBQChicken();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -136,7 +136,7 @@ public class NewYorkStylePizzaOrderingController {
     }
 
     private void initializeMeatzza(){
-        NewYorkStyleTemp.setImage(new Image("meatzzaNewYork.jpg"));
+        NewYorkStyleTemp.setImage(new Image("meatzzaNewYork.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createMeatzza();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();
@@ -149,7 +149,7 @@ public class NewYorkStylePizzaOrderingController {
     }
 
     private void initializeBuildYourOwn(){
-        NewYorkStyleTemp.setImage(new Image("newyorkbuildyourown.jpg"));
+        NewYorkStyleTemp.setImage(new Image("newyorkbuildyourown.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createBuildYourOwn();
         crustType.setText(orderInProgress.getCrust().name());
         selectedTop.getItems().clear();

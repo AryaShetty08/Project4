@@ -22,21 +22,18 @@ public class MainViewController {
     private ImageView CurrentOrderImage;
 
     @FXML
-    private Button switch1;
-
-    @FXML
     public void initialize() {
-        chicagoPizzaImage.setImage(new Image("chicagopizzaimage.jpg"));
-        NYPizzaImage.setImage(new Image("NYPizzaImage.jpg"));
-        StoreOrdersImage.setImage(new Image("StoreOrdersImage.jpg"));
-        CurrentOrderImage.setImage(new Image("currentorderimage.jpg"));
+        chicagoPizzaImage.setImage(new Image("chicagopizzaimage.jpg", 285, 215, false, false));
+        NYPizzaImage.setImage(new Image("NYPizzaImage.jpg", 285, 215, false, false));
+        StoreOrdersImage.setImage(new Image("StoreOrdersImage.jpg", 285, 215, false, false));
+        CurrentOrderImage.setImage(new Image("currentorderimage.jpg", 285, 215, false, false));
     }
 
     public void switchChicago(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Chicago-Style-Pizza-Ordering.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("New test!");
+        stage.setTitle("Chicago Pizza Order View!");
         stage.setScene(scene);
         stage.initModality(Modality.NONE);
         stage.show();
@@ -46,7 +43,7 @@ public class MainViewController {
         Parent root = FXMLLoader.load(getClass().getResource("New-York-Style-Pizza-Ordering.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("New test!");
+        stage.setTitle("New York Pizza Order View!");
         stage.setScene(scene);
         stage.initModality(Modality.NONE);
         stage.show();
@@ -56,7 +53,7 @@ public class MainViewController {
         Parent root = FXMLLoader.load(getClass().getResource("Current-Order-View.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("New test!");
+        stage.setTitle("Current Order View!");
         stage.setScene(scene);
         stage.initModality(Modality.NONE);
         stage.show();
@@ -66,7 +63,7 @@ public class MainViewController {
         Parent root = FXMLLoader.load(getClass().getResource("Store-Orders-View.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("New test!");
+        stage.setTitle("Store Orders View!");
         stage.setScene(scene);
         stage.initModality(Modality.NONE);
         stage.show();
