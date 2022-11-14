@@ -1,5 +1,6 @@
 package com.example.project4;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -17,6 +18,12 @@ public class CurrentOrderViewController {
     private TextField salesTax;
     @FXML
     private TextField orderTotal;
+
+    private ChicagoStylePizzaOrderingController chicagoController;
+
+    public void setCurrentController(ChicagoStylePizzaOrderingController controller){
+        chicagoController = controller;
+    }
 
     public CurrentOrderViewController(){}
 
@@ -40,5 +47,14 @@ public class CurrentOrderViewController {
     }
 
     public void setOrderTotal(){
+    }
+
+    public void placeOrderClick(ActionEvent actionEvent) {
+    }
+
+    public void removePizzaClick(ActionEvent actionEvent) {
+    }
+
+    public void clearOrderClick(ActionEvent actionEvent) {
     }
 }

@@ -36,17 +36,17 @@
       <TextField fx:id="subtotal" editable="false" layoutX="227.0" layoutY="468.0" />
       <TextField fx:id="salesTax" editable="false" layoutX="227.0" layoutY="508.0" />
       <TextField fx:id="orderTotal" editable="false" layoutX="255.0" layoutY="562.0" />
-      <Button layoutX="617.0" layoutY="565.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="170.0" text="Place Order!">
+      <Button layoutX="617.0" layoutY="565.0" mnemonicParsing="false" onAction="#placeOrderClick" prefHeight="46.0" prefWidth="170.0" text="Place Order!">
          <font>
             <Font name="Bell MT" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="616.0" layoutY="458.0" mnemonicParsing="false" text="Remove Pizza">
+      <Button layoutX="616.0" layoutY="458.0" mnemonicParsing="false" onAction="#removePizzaClick" text="Remove Pizza">
          <font>
             <Font name="Bell MT" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="617.0" layoutY="513.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="170.0" text="Clear Order">
+      <Button layoutX="617.0" layoutY="513.0" mnemonicParsing="false" onAction="#clearOrderClick" prefHeight="46.0" prefWidth="170.0" text="Clear Order">
          <font>
             <Font name="Bell MT" size="24.0" />
          </font>

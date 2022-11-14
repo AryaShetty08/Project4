@@ -1,5 +1,6 @@
 package com.example.project4;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -18,5 +19,11 @@ public class StoreOrdersViewController {
     }
 
     public void setOrderTotal(){
+    }
+
+    public void exportStoreOrdersClick(ActionEvent actionEvent) {
+    }
+
+    public void cancelOrderClick(ActionEvent actionEvent) {
     }
 }

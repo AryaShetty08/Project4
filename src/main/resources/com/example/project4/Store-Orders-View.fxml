@@ -23,13 +23,13 @@
       </Label>
       <ListView fx:id="pizzaOrder" layoutX="104.0" layoutY="191.0" prefHeight="249.0" prefWidth="683.0" />
       <TextField fx:id="orderTotal" editable="false" layoutX="637.0" layoutY="147.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="519.0" layoutY="481.0" mnemonicParsing="false" text="Export Store Orders" textAlignment="CENTER">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="519.0" layoutY="481.0" mnemonicParsing="false" onAction="#exportStoreOrdersClick" text="Export Store Orders" textAlignment="CENTER">
          <font>
             <Font name="Bell MT" size="24.0" />
          </font>
       </Button>
       <ChoiceBox fx:id="orderNumber" layoutX="277.0" layoutY="148.0" prefWidth="150.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="481.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="235.0" text="Cancel Order" textAlignment="CENTER">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="481.0" mnemonicParsing="false" onAction="#cancelOrderClick" prefHeight="46.0" prefWidth="235.0" text="Cancel Order" textAlignment="CENTER">
          <font>
             <Font name="Bell MT" size="24.0" />
          </font>

@@ -48,7 +48,6 @@ public class ChicagoStylePizzaOrderingController {
 
 
 
-
     public ChicagoStylePizzaOrderingController(){this.pizzaFactory = new ChicagoPizza();}
 
     @FXML
@@ -177,6 +176,6 @@ public class ChicagoStylePizzaOrderingController {
     public void addToOrderClick(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Current-Order-View.fxml"));
         CurrentOrderViewController currentController = loader.getController();
-        currentController.setOrderNumber(1);
+        currentController.setCurrentController(this);
     }
 }
