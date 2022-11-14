@@ -4,10 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import pizzaManager.ChicagoPizza;
+import pizzaManager.*;
+
+import java.util.ArrayList;
 
 public class CurrentOrderViewController {
-
+    private MainViewController mainViewController;
+    private ArrayList<Pizza> orderList;
     @FXML
     private TextField orderNumber;
     @FXML
@@ -25,7 +28,14 @@ public class CurrentOrderViewController {
         chicagoController = controller;
     }
 
-    public CurrentOrderViewController(){}
+    public CurrentOrderViewController(){
+        this.orderList = new ArrayList<Pizza>();
+//        this.orderNumber = 0;
+    }
+
+    public void setMainViewController (MainViewController mainViewController){
+        this.mainViewController = mainViewController;
+    }
 
     @FXML
     public void initialize() {
@@ -47,6 +57,10 @@ public class CurrentOrderViewController {
     }
 
     public void setOrderTotal(){
+    }
+
+    public void addOrder(Pizza pizza){
+
     }
 
     public void placeOrderClick(ActionEvent actionEvent) {

@@ -10,8 +10,17 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import pizzaManager.*;
 
 public class MainViewController {
+    private ChicagoStylePizzaOrderingController chicagoPizzaController;
+    private NewYorkStylePizzaOrderingController newYorkPizzaController;
+    private CurrentOrderViewController orderViewController;
+    private StoreOrdersViewController storeOrdersViewController;
+    private Scene chicagoScene;
+    private Scene newYorkScene;
+    private Scene orderScene;
+    private Scene storeOrderScene;
     @FXML
     private ImageView chicagoPizzaImage;
     @FXML
@@ -20,6 +29,32 @@ public class MainViewController {
     private ImageView StoreOrdersImage;
     @FXML
     private ImageView CurrentOrderImage;
+
+    public MainViewController() throws IOException {
+        FXMLLoader chicagoLoader = new FXMLLoader(getClass().getResource("Chicago-Style-Pizza-Ordering.fxml"));
+        Parent chicagoRoot = chicagoLoader.load();
+        chicagoPizzaController = chicagoLoader.getController();
+        chicagoPizzaController.setMainViewController(this);
+        chicagoScene = new Scene(chicagoRoot);
+
+        FXMLLoader newYorkLoader = new FXMLLoader(getClass().getResource("New-York-Style-Pizza-Ordering.fxml"));
+        Parent newYorkRoot = newYorkLoader.load();
+        newYorkPizzaController = newYorkLoader.getController();
+        newYorkPizzaController.setMainViewController(this);
+        newYorkScene = new Scene(newYorkRoot);
+
+        FXMLLoader orderLoader = new FXMLLoader(getClass().getResource("Current-Order-View.fxml"));
+        Parent orderRoot = orderLoader.load();
+        orderViewController = orderLoader.getController();
+        orderViewController.setMainViewController(this);
+        orderScene = new Scene(orderRoot);
+
+        FXMLLoader storeOrderLoader = new FXMLLoader(getClass().getResource("Store-Orders-View.fxml"));
+        Parent storeOrderRoot = storeOrderLoader.load();
+        storeOrdersViewController = storeOrderLoader.getController();
+        storeOrdersViewController.setMainViewController(this);
+        storeOrderScene = new Scene(storeOrderRoot);
+    }
 
     @FXML
     public void initialize() {
@@ -30,42 +65,38 @@ public class MainViewController {
     }
 
     public void switchChicago(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Chicago-Style-Pizza-Ordering.fxml"));
-        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Chicago Pizza Order View!");
-        stage.setScene(scene);
+        stage.setScene(chicagoScene);
         stage.initModality(Modality.NONE);
         stage.show();
     }
 
     public void switchNewYork(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("New-York-Style-Pizza-Ordering.fxml"));
-        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("New York Pizza Order View!");
-        stage.setScene(scene);
+        stage.setScene(newYorkScene);
         stage.initModality(Modality.NONE);
         stage.show();
     }
 
     public void switchCurrentOrder(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Current-Order-View.fxml"));
-        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Current Order View!");
-        stage.setScene(scene);
+        stage.setScene(orderScene);
         stage.initModality(Modality.NONE);
         stage.show();
     }
 
     public void switchStoreOrders(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Store-Orders-View.fxml"));
-        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Store Orders View!");
-        stage.setScene(scene);
+        stage.setScene(storeOrderScene);
         stage.initModality(Modality.NONE);
         stage.show();
+    }
+
+    public void addToOrderList(Pizza pizza){
+        orderViewController.addOrder(pizza);
     }
 }

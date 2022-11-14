@@ -8,12 +8,17 @@ import javafx.scene.control.TextField;
 
 public class StoreOrdersViewController {
 
+    private MainViewController mainViewController;
     @FXML
     private TextField orderTotal;
     @FXML
     private ListView pizzaOrder;
     @FXML
     private ChoiceBox<Integer> orderNumber;
+
+    public void setMainViewController (MainViewController mainViewController){
+        this.mainViewController = mainViewController;
+    }
 
     public void setPizzaOrder(){
     }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 
 public class NewYorkStylePizzaOrderingController {
+    private MainViewController mainViewController;
     private PizzaFactory pizzaFactory;
     private Pizza orderInProgress;
 
@@ -38,12 +39,6 @@ public class NewYorkStylePizzaOrderingController {
     private ListView<Topping> selectedTop;
     @FXML
     private TextField pizzaPrice;
-    @FXML
-    private Button addTop;
-    @FXML
-    private Button removeTop;
-    @FXML
-    private Button addToOrder;
 
     public NewYorkStylePizzaOrderingController(){
         this.pizzaFactory = new NYPizza();
@@ -70,6 +65,10 @@ public class NewYorkStylePizzaOrderingController {
             }
         });
         pizzaFlavor.getSelectionModel().select(0);
+    }
+
+    public void setMainViewController (MainViewController mainViewController){
+        this.mainViewController = mainViewController;
     }
 
     @FXML
@@ -170,5 +169,12 @@ public class NewYorkStylePizzaOrderingController {
             }
         }
         return selectedToppings;
+    }
+
+    @FXML
+    public void addToOrderClick(){
+        mainViewController.addToOrderList(orderInProgress);
+        pizzaSize.selectToggle(smallPizza);
+        initializeBuildYourOwn();
     }
 }
