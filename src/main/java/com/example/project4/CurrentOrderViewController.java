@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 public class CurrentOrderViewController {
     private MainViewController mainViewController;
-    private ArrayList<Pizza> orderList;
+    private Order currentOrder;
+    private int serialNumber;
     @FXML
     private TextField orderNumber;
     @FXML
@@ -22,15 +23,9 @@ public class CurrentOrderViewController {
     @FXML
     private TextField orderTotal;
 
-    private ChicagoStylePizzaOrderingController chicagoController;
-
-    public void setCurrentController(ChicagoStylePizzaOrderingController controller){
-        chicagoController = controller;
-    }
-
     public CurrentOrderViewController(){
-        this.orderList = new ArrayList<Pizza>();
-//        this.orderNumber = 0;
+        this.serialNumber = 1;
+        this.currentOrder = new Order(this.serialNumber);
     }
 
     public void setMainViewController (MainViewController mainViewController){
@@ -39,14 +34,10 @@ public class CurrentOrderViewController {
 
     @FXML
     public void initialize() {
-        ChicagoStylePizzaOrderingController chicagoController = new ChicagoStylePizzaOrderingController();
-        NewYorkStylePizzaOrderingController newYorkController = new NewYorkStylePizzaOrderingController();
+        orderNumber.setText(String.valueOf(serialNumber));
 
     }
 
-    public void setOrderNumber(int orderNum){
-        orderNumber.setText(Integer.valueOf(orderNum).toString());
-    }
     public void setPizzaOrder(){
     }
 
@@ -60,15 +51,19 @@ public class CurrentOrderViewController {
     }
 
     public void addOrder(Pizza pizza){
-
+        currentOrder.add(pizza);
     }
 
+    @FXML
     public void placeOrderClick(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void removePizzaClick(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void clearOrderClick(ActionEvent actionEvent) {
+
     }
 }
