@@ -6,12 +6,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import pizzaManager.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CurrentOrderViewController {
     private MainViewController mainViewController;
     private Order currentOrder;
     private int serialNumber;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     @FXML
     private TextField orderNumber;
     @FXML
@@ -35,7 +37,7 @@ public class CurrentOrderViewController {
     @FXML
     public void initialize() {
         orderNumber.setText(String.valueOf(serialNumber));
-
+        subtotal.setText("0");
     }
 
     public void setPizzaOrder(){
@@ -52,6 +54,7 @@ public class CurrentOrderViewController {
 
     public void addOrder(Pizza pizza){
         currentOrder.add(pizza);
+        subtotal.setText(df.format(currentOrder.getSubtotal()));
     }
 
     @FXML
