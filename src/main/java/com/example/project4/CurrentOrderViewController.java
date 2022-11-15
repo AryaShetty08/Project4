@@ -27,7 +27,6 @@ public class CurrentOrderViewController {
 
     public CurrentOrderViewController(){
         this.serialNumber = 1;
-        this.currentOrder = new Order(this.serialNumber);
     }
 
     public void setMainViewController (MainViewController mainViewController){
@@ -53,6 +52,9 @@ public class CurrentOrderViewController {
     }
 
     public void addOrder(Pizza pizza){
+        if (currentOrder == null){
+            currentOrder = new Order(this.serialNumber);
+        }
         currentOrder.add(pizza);
         subtotal.setText(df.format(currentOrder.getSubtotal()));
     }

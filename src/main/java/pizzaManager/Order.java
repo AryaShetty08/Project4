@@ -46,4 +46,8 @@ public class Order implements Customizable{
         }
         return false;
     }
+
+    public ArrayList<Pizza> getPizzaList(){
+        return pizzaList;
+    }
 }
