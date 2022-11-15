@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="656.0" prefWidth="891.0" style="-fx-background-color: #fcba03;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.NewYorkStylePizzaOrderingController">
+<AnchorPane prefHeight="656.0" prefWidth="891.0" style="-fx-background-color: #fcba03;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project4.NewYorkStylePizzaOrderingController">
    <children>
       <Label layoutX="229.0" layoutY="14.0" text="New York Style Pizza">
          <font>
@@ -75,5 +75,10 @@
             <Font name="Bell MT" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="addOutput" layoutX="624.0" layoutY="609.0">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.project4;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import pizzaManager.*;
 
 import java.awt.event.ActionListener;
@@ -39,6 +41,8 @@ public class NewYorkStylePizzaOrderingController {
     private ListView<Topping> selectedTop;
     @FXML
     private TextField pizzaPrice;
+    @FXML
+    private Label addOutput;
 
     public NewYorkStylePizzaOrderingController(){
         this.pizzaFactory = new NYPizza();
@@ -173,6 +177,10 @@ public class NewYorkStylePizzaOrderingController {
 
     @FXML
     public void addToOrderClick(){
+        addOutput.setText("Added pizza!");
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> addOutput.setText(null));
+        pause.play();
         mainViewController.addToOrderList(orderInProgress);
         pizzaSize.selectToggle(smallPizza);
         initializeBuildYourOwn();

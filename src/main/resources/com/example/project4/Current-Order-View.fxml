@@ -51,5 +51,10 @@
             <Font name="Bell MT" size="24.0" />
          </font>
       </Button>
+      <Label fx:id="orderOutput" layoutX="688.0" layoutY="625.0">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

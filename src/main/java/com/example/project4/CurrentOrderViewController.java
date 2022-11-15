@@ -1,9 +1,12 @@
 package com.example.project4;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 import pizzaManager.*;
 
 import java.text.DecimalFormat;
@@ -24,6 +27,8 @@ public class CurrentOrderViewController {
     private TextField salesTax;
     @FXML
     private TextField orderTotal;
+    @FXML
+    private Label orderOutput;
 
     public CurrentOrderViewController(){
         this.serialNumber = 1;
@@ -54,12 +59,16 @@ public class CurrentOrderViewController {
         subtotal.setText(df.format(currentOrder.getSubtotal()));
         salesTax.setText(df.format(currentOrder.getTax()));
         orderTotal.setText(df.format(currentOrder.getTotal()));
-        pizzaOrder.getItems().removeAll();
-        pizzaOrder.getItems().addAll(currentOrder.getPizzaList());
+        pizzaOrder.getItems().add(pizza);
     }
 
     @FXML
     public void placeOrderClick(ActionEvent actionEvent) {
+        orderOutput.setText("Added order!");
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(e -> orderOutput.setText(null));
+        pause.play();
+        serialNumber++;
         mainViewController.addToStoreOrder(currentOrder);
         serialNumber++;
         currentOrder = null;
