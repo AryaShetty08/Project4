@@ -86,6 +86,10 @@ public class CurrentOrderViewController {
 
     @FXML
     public void clearOrderClick(ActionEvent actionEvent) {
-
+        pizzaOrder.getItems().clear();
+        subtotal.clear();
+        salesTax.clear();
+        orderTotal.clear();
+        orderNumber.clear();
     }
 }
