@@ -54,4 +54,20 @@ public class Meatzza extends Pizza{
     public ArrayList<Topping> getToppings(){
         return toppings;
     }
+
+    @Override
+    public String toString() {
+        String toReturn = "Meatzza (";
+        if (crust == Crust.HAND_TOSSED){
+            toReturn = toReturn + "New York Style - Hand Tossed), ";
+        }
+        else {
+            toReturn = toReturn + "Chicago Style - Stuffed), ";
+        }
+        for (Topping topping: toppings){
+            toReturn = toReturn + (topping.name() + ", ");
+        }
+        toReturn = toReturn + (size.name()) + ", $" + (price());
+        return toReturn;
+    }
 }
