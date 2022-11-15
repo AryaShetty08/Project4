@@ -8,9 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
+import pizzaManager.Order;
+import pizzaManager.StoreOrder;
 
 public class StoreOrdersViewController {
 
+    private StoreOrder storeOrder;
     private MainViewController mainViewController;
     @FXML
     private TextField orderTotal;
@@ -23,6 +26,9 @@ public class StoreOrdersViewController {
 
     public void setMainViewController (MainViewController mainViewController){
         this.mainViewController = mainViewController;
+    }
+
+    public void addOrder(Order order){
     }
 
     public void setPizzaOrder(){
