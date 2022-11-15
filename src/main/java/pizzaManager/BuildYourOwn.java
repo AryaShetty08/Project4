@@ -65,4 +65,21 @@ public class BuildYourOwn extends Pizza{
     public void setSize(Size size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        String toReturn = "Build Your Own (";
+        if (crust == Crust.HAND_TOSSED){
+            toReturn = toReturn + "New York Style - Hand Tossed), ";
+        }
+        else {
+            toReturn = toReturn + "Chicago Style - Pan), ";
+        }
+        for (Topping topping: toppings){
+            toReturn = toReturn + (topping.name() + ", ");
+        }
+        toReturn = toReturn + (size.name()) + ", $" + (price());
+        return toReturn;
+    }
+
 }

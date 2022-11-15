@@ -17,7 +17,7 @@ public class CurrentOrderViewController {
     @FXML
     private TextField orderNumber;
     @FXML
-    private ListView pizzaOrder;
+    private ListView<Pizza> pizzaOrder;
     @FXML
     private TextField subtotal;
     @FXML
@@ -36,7 +36,6 @@ public class CurrentOrderViewController {
     @FXML
     public void initialize() {
         orderNumber.setText(String.valueOf(serialNumber));
-        subtotal.setText("0");
     }
 
     public void setPizzaOrder(){
@@ -57,6 +56,10 @@ public class CurrentOrderViewController {
         }
         currentOrder.add(pizza);
         subtotal.setText(df.format(currentOrder.getSubtotal()));
+        salesTax.setText(df.format(currentOrder.getTax()));
+        orderTotal.setText(df.format(currentOrder.getTotal()));
+        pizzaOrder.getItems().removeAll();
+        pizzaOrder.getItems().addAll(currentOrder.getPizzaList());
     }
 
     @FXML

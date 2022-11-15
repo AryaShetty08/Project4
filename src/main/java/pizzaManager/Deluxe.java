@@ -57,6 +57,22 @@ public class Deluxe extends Pizza {
     }
 
     @Override
+    public String toString() {
+        String toReturn = "Deluxe (";
+        if (crust == Crust.BROOKLYN){
+            toReturn = toReturn + "New York Style - Brooklyn), ";
+        }
+        else {
+            toReturn = toReturn + "Chicago Style - Deep Dish), ";
+        }
+        for (Topping topping: toppings){
+            toReturn = toReturn + (topping.name() + ", ");
+        }
+        toReturn = toReturn + (size.name()) + ", $" + (price());
+        return toReturn;
+    }
+
+    @Override
     public ArrayList<Topping> getToppings() {
         return super.getToppings();
     }
