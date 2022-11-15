@@ -60,6 +60,14 @@ public class CurrentOrderViewController {
 
     @FXML
     public void placeOrderClick(ActionEvent actionEvent) {
+        mainViewController.addToStoreOrder(currentOrder);
+        serialNumber++;
+        currentOrder = null;
+        pizzaOrder.getItems().clear();
+        subtotal.clear();
+        salesTax.clear();
+        orderTotal.clear();
+        orderNumber.clear();
     }
 
     @FXML

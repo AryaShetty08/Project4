@@ -99,4 +99,7 @@ public class MainViewController {
     public void addToOrderList(Pizza pizza){
         orderViewController.addOrder(pizza);
     }
+    public void addToStoreOrder(Order order){
+        storeOrdersViewController.addOrder(order);
+    }
 }
