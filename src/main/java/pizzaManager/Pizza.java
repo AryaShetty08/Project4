@@ -16,4 +16,6 @@ public abstract class Pizza implements Customizable{
     public Crust getCrust(){
         return crust;
     }
+    @Override
+    public abstract String toString();
 }

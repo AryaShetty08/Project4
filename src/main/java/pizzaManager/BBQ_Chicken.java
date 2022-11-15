@@ -50,4 +50,20 @@ public class BBQ_Chicken extends Pizza{
     public void setSize(Size size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        String toReturn = "BBQ Chicken (";
+        if (crust == Crust.THIN){
+            toReturn = toReturn + "New York Style - Thin), ";
+        }
+        else {
+            toReturn = toReturn + "Chicago Style - Pan), ";
+        }
+        for (Topping topping: toppings){
+            toReturn = toReturn + (topping.name() + ", ");
+        }
+        toReturn = toReturn + (size.name()) + ", $" + (price());
+        return toReturn;
+    }
 }
