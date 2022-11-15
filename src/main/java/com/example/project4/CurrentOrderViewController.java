@@ -33,11 +33,6 @@ public class CurrentOrderViewController {
         this.mainViewController = mainViewController;
     }
 
-    @FXML
-    public void initialize() {
-        orderNumber.setText(String.valueOf(serialNumber));
-    }
-
     public void setPizzaOrder(){
     }
 
@@ -53,6 +48,7 @@ public class CurrentOrderViewController {
     public void addOrder(Pizza pizza){
         if (currentOrder == null){
             currentOrder = new Order(this.serialNumber);
+            orderNumber.setText(String.valueOf(serialNumber));
         }
         currentOrder.add(pizza);
         subtotal.setText(df.format(currentOrder.getSubtotal()));
