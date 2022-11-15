@@ -173,6 +173,7 @@ public class ChicagoStylePizzaOrderingController {
     public void addToOrderClick(){
         mainViewController.addToOrderList(orderInProgress);
         pizzaSize.selectToggle(smallPizza);
+        pizzaFlavor.getSelectionModel().select(0);
         initializeBuildYourOwn();
     }
 }
