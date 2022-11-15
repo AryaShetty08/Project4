@@ -47,6 +47,10 @@ public class Order implements Customizable{
         return false;
     }
 
+    public boolean isEmpty(){
+        return pizzaList.isEmpty();
+    }
+
     public ArrayList<Pizza> getPizzaList(){
         return pizzaList;
     }

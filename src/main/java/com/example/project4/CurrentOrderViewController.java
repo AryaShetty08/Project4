@@ -64,6 +64,24 @@ public class CurrentOrderViewController {
 
     @FXML
     public void removePizzaClick(ActionEvent actionEvent) {
+        if (!(pizzaOrder.getSelectionModel().getSelectedItem() == null)){
+            Pizza pizza = pizzaOrder.getSelectionModel().getSelectedItem();
+            if (!currentOrder.remove(pizza)){
+                return;
+            }
+            pizzaOrder.getItems().remove(pizza);
+            if (currentOrder.isEmpty()){
+                subtotal.clear();
+                salesTax.clear();
+                orderTotal.clear();
+                orderNumber.clear();
+            }
+            else {
+                subtotal.setText(df.format(currentOrder.getSubtotal()));
+                salesTax.setText(df.format(currentOrder.getTax()));
+                orderTotal.setText(df.format(currentOrder.getTotal()));
+            }
+        }
     }
 
     @FXML
