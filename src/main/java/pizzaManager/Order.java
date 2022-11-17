@@ -54,4 +54,8 @@ public class Order implements Customizable{
     public ArrayList<Pizza> getPizzaList(){
         return pizzaList;
     }
+
+    public int getSerialNumber() {
+        return serialNumber;
+    }
 }
