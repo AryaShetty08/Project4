@@ -12,15 +12,10 @@ import pizzaManager.Order;
 import pizzaManager.Pizza;
 import pizzaManager.StoreOrder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.DecimalFormat;
 
 public class StoreOrdersViewController {
-
-    File export = new File("ExportOrders.txt");
-    PrintWriter pw = new PrintWriter(export);
 
 
     private StoreOrder storeOrder;
@@ -35,7 +30,7 @@ public class StoreOrdersViewController {
     @FXML
     private Label exportOutput;
 
-    public StoreOrdersViewController() throws FileNotFoundException {
+    public StoreOrdersViewController() {
     }
 
     public void setMainViewController (MainViewController mainViewController){
@@ -49,11 +44,15 @@ public class StoreOrdersViewController {
         orderNumber.getSelectionModel().select(order.getSerialNumber()-1);
     }
 
-    public void exportStoreOrdersClick(ActionEvent actionEvent) {
+    public void exportStoreOrdersClick(ActionEvent actionEvent) throws FileNotFoundException {
         exportOutput.setText("Exported to document!");
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> exportOutput.setText(null));
         pause.play();
+        File export = new File("ExportOrders.txt");
+        PrintWriter pw = new PrintWriter(export);
+        pw.println(pizzaOrder.getItems().toString());
+        pw.close();
     }
 
     public void cancelOrderClick(ActionEvent actionEvent) {
