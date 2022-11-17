@@ -83,16 +83,13 @@ public class StoreOrdersViewController {
 
     public void cancelOrderClick(ActionEvent actionEvent) {
         int currentSerialNumber = orderNumber.getValue();
-        orderTotal.setText("");
         for (int i = 0; i < orderNumber.getItems().size(); i++){
             if (orderNumber.getItems().get(i) == currentSerialNumber){
                 orderNumber.getItems().remove(i);
-                orderNumber.getSelectionModel().
                 break;
             }
         }
         Order currentOrder = null;
-        pizzaOrder.getItems().clear();
         for (Order order : storeOrder.getOrderList()){
             if (currentSerialNumber == order.getSerialNumber()){
                 currentOrder = order;
@@ -104,5 +101,13 @@ public class StoreOrdersViewController {
             return;
         }
         storeOrder.remove(currentOrder);
+        if (orderNumber.getItems().isEmpty()){
+            pizzaOrder.getItems().clear();
+            orderTotal.setText("");
+            orderNumber.getSelectionModel().clearSelection();
+        }
+        else {
+            orderNumber.getSelectionModel().selectFirst();
+        }
     }
 }
