@@ -87,7 +87,7 @@ public class StoreOrdersViewController {
         for (int i = 0; i < orderNumber.getItems().size(); i++){
             if (orderNumber.getItems().get(i) == currentSerialNumber){
                 orderNumber.getItems().remove(i);
-                orderNumber.getSelectionModel().clearSelection();
+                orderNumber.getSelectionModel().
                 break;
             }
         }
