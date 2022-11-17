@@ -16,8 +16,6 @@ import java.io.*;
 import java.text.DecimalFormat;
 
 public class StoreOrdersViewController {
-
-
     private StoreOrder storeOrder;
     private MainViewController mainViewController;
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -31,17 +29,41 @@ public class StoreOrdersViewController {
     private Label exportOutput;
 
     public StoreOrdersViewController() {
+        this.storeOrder = new StoreOrder();
     }
 
     public void setMainViewController (MainViewController mainViewController){
         this.mainViewController = mainViewController;
     }
+    @FXML
+    public void initialize() {
+        orderNumber.setOnAction((actionEvent) ->{
+            int currentSerialNumber = orderNumber.getValue();
+            Order currentOrder = null;
+            pizzaOrder.getItems().clear();
+            for (Order order : storeOrder.getOrderList()){
+                if (currentSerialNumber == order.getSerialNumber()){
+                    currentOrder = order;
+                    break;
+                }
+            }
+            if (currentOrder == null){
+                orderTotal.setText("");
+                return;
+            }
+            orderTotal.setText(df.format(currentOrder.getTotal()));
+            pizzaOrder.getItems().addAll(currentOrder.getPizzaList());
+        });
+    }
+
 
     public void addOrder(Order order){
+        storeOrder.add(order);
         orderTotal.setText(df.format(order.getTotal()));
+        pizzaOrder.getItems().clear();
         pizzaOrder.getItems().addAll(order.getPizzaList());
         orderNumber.getItems().add(order.getSerialNumber());
-        orderNumber.getSelectionModel().select(order.getSerialNumber()-1);
+        orderNumber.getSelectionModel().selectLast();
     }
 
     public void exportStoreOrdersClick(ActionEvent actionEvent) throws FileNotFoundException {
@@ -51,13 +73,36 @@ public class StoreOrdersViewController {
         pause.play();
         File export = new File("ExportOrders.txt");
         PrintWriter pw = new PrintWriter(export);
-        pw.println(pizzaOrder.getItems().toString());
+        pw.println("Order " + orderNumber.getValue() + ":");
+        for (Pizza pizza: pizzaOrder.getItems()){
+            pw.println(pizza.toString());
+        }
+        pw.println("Order Total: $" + orderTotal.getText());
         pw.close();
     }
 
     public void cancelOrderClick(ActionEvent actionEvent) {
-        orderNumber.getSelectionModel().clearSelection();
+        int currentSerialNumber = orderNumber.getValue();
         orderTotal.setText("");
-        orderNumber.getItems().remove(orderNumber.getSelectionModel().getSelectedIndex());
+        for (int i = 0; i < orderNumber.getItems().size(); i++){
+            if (orderNumber.getItems().get(i) == currentSerialNumber){
+                orderNumber.getItems().remove(i);
+                orderNumber.getSelectionModel().clearSelection();
+                break;
+            }
+        }
+        Order currentOrder = null;
+        pizzaOrder.getItems().clear();
+        for (Order order : storeOrder.getOrderList()){
+            if (currentSerialNumber == order.getSerialNumber()){
+                currentOrder = order;
+                break;
+            }
+        }
+        if (currentOrder == null){
+            orderTotal.setText("");
+            return;
+        }
+        storeOrder.remove(currentOrder);
     }
 }
