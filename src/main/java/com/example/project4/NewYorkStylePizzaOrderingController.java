@@ -183,6 +183,7 @@ public class NewYorkStylePizzaOrderingController {
         pause.play();
         mainViewController.addToOrderList(orderInProgress);
         pizzaSize.selectToggle(smallPizza);
+        pizzaFlavor.getSelectionModel().select(0);
         initializeBuildYourOwn();
     }
 }

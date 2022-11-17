@@ -70,7 +70,6 @@ public class CurrentOrderViewController {
         pause.play();
         serialNumber++;
         mainViewController.addToStoreOrder(currentOrder);
-        serialNumber++;
         currentOrder = null;
         pizzaOrder.getItems().clear();
         subtotal.clear();
