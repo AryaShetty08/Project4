@@ -64,18 +64,20 @@ public class CurrentOrderViewController {
 
     @FXML
     public void placeOrderClick(ActionEvent actionEvent) {
-        orderOutput.setText("Added order!");
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(e -> orderOutput.setText(null));
-        pause.play();
-        serialNumber++;
-        mainViewController.addToStoreOrder(currentOrder);
-        currentOrder = null;
-        pizzaOrder.getItems().clear();
-        subtotal.clear();
-        salesTax.clear();
-        orderTotal.clear();
-        orderNumber.clear();
+        if(!subtotal.getText().equals("")){
+            orderOutput.setText("Added order!");
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(e -> orderOutput.setText(null));
+            pause.play();
+            serialNumber++;
+            mainViewController.addToStoreOrder(currentOrder);
+            currentOrder = null;
+            pizzaOrder.getItems().clear();
+            subtotal.clear();
+            salesTax.clear();
+            orderTotal.clear();
+            orderNumber.clear();
+        }
     }
 
     @FXML

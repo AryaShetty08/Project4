@@ -66,18 +66,18 @@ public class StoreOrdersViewController {
         orderNumber.getSelectionModel().selectLast();
     }
 
-    public void exportStoreOrdersClick(ActionEvent actionEvent) throws FileNotFoundException {
+    public void exportStoreOrdersClick(ActionEvent actionEvent) throws IOException {
         exportOutput.setText("Exported to document!");
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> exportOutput.setText(null));
         pause.play();
         File export = new File("ExportOrders.txt");
-        PrintWriter pw = new PrintWriter(export);
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(export, true)));
         pw.println("Order " + orderNumber.getValue() + ":");
         for (Pizza pizza: pizzaOrder.getItems()){
             pw.println(pizza.toString());
         }
-        pw.println("Order Total: $" + orderTotal.getText());
+        pw.println("Order Total: $" + orderTotal.getText() + "\n");
         pw.close();
     }
 
