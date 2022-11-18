@@ -38,7 +38,14 @@ public class StoreOrdersViewController {
     @FXML
     public void initialize() {
         orderNumber.setOnAction((actionEvent) ->{
-            int currentSerialNumber = orderNumber.getValue();
+            int currentSerialNumber;
+            if (orderNumber.getItems().isEmpty()){
+                currentSerialNumber = -1;
+            }
+            else {
+                currentSerialNumber = orderNumber.getValue();
+
+            }
             Order currentOrder = null;
             pizzaOrder.getItems().clear();
             for (Order order : storeOrder.getOrderList()){
@@ -82,31 +89,32 @@ public class StoreOrdersViewController {
     }
 
     public void cancelOrderClick(ActionEvent actionEvent) {
+        if (orderNumber.getItems().isEmpty()){
+            return;
+        }
         int currentSerialNumber = orderNumber.getValue();
-        for (int i = 0; i < orderNumber.getItems().size(); i++){
-            if (orderNumber.getItems().get(i) == currentSerialNumber){
+        for (int i = 0; i < orderNumber.getItems().size(); i++) {
+            if (orderNumber.getItems().get(i) == currentSerialNumber) {
                 orderNumber.getItems().remove(i);
                 break;
             }
         }
         Order currentOrder = null;
-        for (Order order : storeOrder.getOrderList()){
-            if (currentSerialNumber == order.getSerialNumber()){
+        for (Order order : storeOrder.getOrderList()) {
+            if (currentSerialNumber == order.getSerialNumber()) {
                 currentOrder = order;
                 break;
             }
         }
-        if (currentOrder == null){
+        if (currentOrder == null) {
             orderTotal.setText("");
             return;
         }
         storeOrder.remove(currentOrder);
-        if (orderNumber.getItems().isEmpty()){
+        if (orderNumber.getItems().isEmpty()) {
             pizzaOrder.getItems().clear();
             orderTotal.setText("");
-            orderNumber.getSelectionModel().clearSelection();
-        }
-        else {
+        } else {
             orderNumber.getSelectionModel().selectFirst();
         }
     }
