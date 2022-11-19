@@ -1,12 +1,20 @@
 package pizzaManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * BuildYourOwn class is a blueprint for BuildYourOwn Pizza objects
+ * Subclass of Pizza Class
+ * @author Arya Shetty, John Greaney-Cheng
+ */
 public class BuildYourOwn extends Pizza{
     private int numToppings;
-    private static final double pricePerTopping = 1.59;
 
+    /**
+     * Creates a BuildYourOwn Pizza object
+     * Initializes empty Topping List, Size to Small, and Crust Type based on Parameter
+     * @param pizzaFactory NY or Chicago Factory determines crust type
+     */
     public BuildYourOwn (PizzaFactory pizzaFactory){
         if (pizzaFactory instanceof NYPizza){
             crust = Crust.HAND_TOSSED;
@@ -22,6 +30,12 @@ public class BuildYourOwn extends Pizza{
         numToppings = 0;
     }
 
+    /**
+     * Adds topping to topping list
+     * Max Number of Pizza Toppings is 7
+     * @param obj topping to add to topping list
+     * @return true if added, false otherwise
+     */
     @Override
     public boolean add(Object obj) {
         if (numToppings == 7){
@@ -34,6 +48,11 @@ public class BuildYourOwn extends Pizza{
         return true;
     }
 
+    /**
+     * Removes topping from topping list
+     * @param obj topping to remove from topping list
+     * @return true if removed, false otherwise
+     */
     @Override
     public boolean remove(Object obj) {
         if (toppings.remove((Topping) obj)){
@@ -43,17 +62,29 @@ public class BuildYourOwn extends Pizza{
         return false;
     }
 
+    /**
+     * Method to calculate and return this Build Your Own pizza price
+     * Price is based off of size and toppings
+     *  - Base Small costs 8.99
+     *  - Base Medium costs 10.99
+     *  - Base Large costs 12.99
+     *  - 1.59 per topping
+     * @return price of pizza
+     */
     @Override
     public double price() {
         switch (size) {
             case SMALL -> {
-                return Double.parseDouble(df.format(8.99 + (pricePerTopping*numToppings)));
+                return Double.parseDouble(df.format(Constant.BUILD_YOUR_OWN_SMALL_PRICE.getValue()
+                        + (Constant.PRICE_PER_TOPPING.getValue()*numToppings)));
             }
             case MEDIUM -> {
-                return Double.parseDouble(df.format(10.99 + (pricePerTopping*numToppings)));
+                return Double.parseDouble(df.format(Constant.BUILD_YOUR_OWN_MEDIUM_PRICE.getValue()
+                        + (Constant.PRICE_PER_TOPPING.getValue()*numToppings)));
             }
             case LARGE -> {
-                return Double.parseDouble(df.format(12.99 + (pricePerTopping*numToppings)));
+                return Double.parseDouble(df.format(Constant.BUILD_YOUR_OWN_LARGE_PRICE.getValue()
+                        + (Constant.PRICE_PER_TOPPING.getValue()*numToppings)));
             }
             default -> {
                 return 0;
@@ -61,6 +92,10 @@ public class BuildYourOwn extends Pizza{
         }
     }
 
+    /**
+     * Returns String representation of this Build Your Own pizza
+     * @return String representation of this Build Your Own pizza
+     */
     @Override
     public String toString() {
         String toReturn = "Build Your Own (";

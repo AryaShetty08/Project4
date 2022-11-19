@@ -78,14 +78,7 @@ public class StoreOrdersViewController {
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> exportOutput.setText(null));
         pause.play();
-        File export = new File("ExportOrders.txt");
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(export, true)));
-        pw.println("Order " + orderNumber.getValue() + ":");
-        for (Pizza pizza: pizzaOrder.getItems()){
-            pw.println(pizza.toString());
-        }
-        pw.println("Order Total: $" + orderTotal.getText() + "\n");
-        pw.close();
+        storeOrder.export(orderNumber.getValue());
     }
 
     public void cancelOrderClick(ActionEvent actionEvent) {

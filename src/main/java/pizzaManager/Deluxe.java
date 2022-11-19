@@ -52,13 +52,13 @@ public class Deluxe extends Pizza {
     public double price() {
         switch (size) {
             case SMALL -> {
-                return 14.99;
+                return Constant.DELUXE_SMALL_PRICE.getValue();
             }
             case MEDIUM -> {
-                return 16.99;
+                return Constant.DELUXE_MEDIUM_PRICE.getValue();
             }
             case LARGE -> {
-                return 18.99;
+                return Constant.DELUXE_LARGE_PRICE.getValue();
             }
             default -> {
                 return 0;

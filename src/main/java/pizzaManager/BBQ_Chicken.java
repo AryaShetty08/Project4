@@ -58,13 +58,13 @@ public class BBQ_Chicken extends Pizza {
     public double price() {
         switch (size) {
             case SMALL -> {
-                return 13.99;
+                return Constant.BBQ_CHICKEN_SMALL_PRICE.getValue();
             }
             case MEDIUM -> {
-                return 15.99;
+                return Constant.BBQ_CHICKEN_MEDIUM_PRICE.getValue();
             }
             case LARGE -> {
-                return 17.99;
+                return Constant.BBQ_CHICKEN_LARGE_PRICE.getValue();
             }
             default -> {
                 return 0;
