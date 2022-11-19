@@ -62,11 +62,6 @@ public class BuildYourOwn extends Pizza{
     }
 
     @Override
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
-    @Override
     public String toString() {
         String toReturn = "Build Your Own (";
         if (crust == Crust.HAND_TOSSED){

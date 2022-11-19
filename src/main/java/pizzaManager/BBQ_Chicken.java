@@ -3,7 +3,18 @@ package pizzaManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BBQ_Chicken extends Pizza{
+/**
+ * BBQ_Chicken class is a blueprint for BBQ_Chicken Pizza objects
+ * Subclass of Pizza Class
+ * @author Arya Shetty, John Greaney-Cheng
+ */
+public class BBQ_Chicken extends Pizza {
+
+    /**
+     * Creates a BBQ_Chicken Pizza object
+     * Initializes predetermined Topping List, Size to Small, and Crust Type based on Parameter
+     * @param pizzaFactory NY or Chicago Factory determines crust type
+     */
     public BBQ_Chicken (PizzaFactory pizzaFactory){
         if (pizzaFactory instanceof NYPizza){
             crust = Crust.THIN;
@@ -18,16 +29,31 @@ public class BBQ_Chicken extends Pizza{
         toppings = new ArrayList<Topping>(Arrays.asList(Topping.BBQ_CHICKEN, Topping.GREEN_PEPPER, Topping.PROVOLONE, Topping.CHEDDAR));
     }
 
+    /**
+     * No need to add/remove toppings, so method always returns false
+     * @param obj topping to add to Topping List (can't in this class)
+     * @return false
+     */
     @Override
     public boolean add(Object obj) {
         return false;
     }
 
+    /**
+     * No need to add/remove toppings, so method always returns false
+     * @param obj topping to add to Topping List (can't in this class)
+     * @return false
+     */
     @Override
     public boolean remove(Object obj) {
         return false;
     }
 
+    /**
+     * Method to calculate and return this BBQ Chicken pizza price
+     * Price is based solely off of size (see below)
+     * @return price of pizza
+     */
     @Override
     public double price() {
         switch (size) {
@@ -46,11 +72,10 @@ public class BBQ_Chicken extends Pizza{
         }
     }
 
-    @Override
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
+    /**
+     * Returns String representation of this BBQ Chicken pizza
+     * @return String representation of this BBQ Chicken pizza
+     */
     @Override
     public String toString() {
         String toReturn = "BBQ Chicken (";
