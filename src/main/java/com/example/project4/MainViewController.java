@@ -31,13 +31,13 @@ public class MainViewController {
     private ImageView CurrentOrderImage;
 
     public MainViewController() throws IOException {
-        FXMLLoader chicagoLoader = new FXMLLoader(getClass().getResource("Chicago-Style-Pizza-Ordering.fxml"));
+        FXMLLoader chicagoLoader = new FXMLLoader(getClass().getResource("Chicago-Style-Pizza-Ordering-View.fxml"));
         Parent chicagoRoot = chicagoLoader.load();
         chicagoPizzaController = chicagoLoader.getController();
         chicagoPizzaController.setMainViewController(this);
         chicagoScene = new Scene(chicagoRoot);
 
-        FXMLLoader newYorkLoader = new FXMLLoader(getClass().getResource("New-York-Style-Pizza-Ordering.fxml"));
+        FXMLLoader newYorkLoader = new FXMLLoader(getClass().getResource("New-York-Style-Pizza-Ordering-View.fxml"));
         Parent newYorkRoot = newYorkLoader.load();
         newYorkPizzaController = newYorkLoader.getController();
         newYorkPizzaController.setMainViewController(this);

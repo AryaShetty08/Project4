@@ -3,10 +3,7 @@ package com.example.project4;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.util.Duration;
 import pizzaManager.Order;
 import pizzaManager.Pizza;
@@ -24,7 +21,7 @@ public class StoreOrdersViewController {
     @FXML
     private ListView<Pizza> pizzaOrder;
     @FXML
-    private ChoiceBox<Integer> orderNumber;
+    private ComboBox<Integer> orderNumber;
     @FXML
     private Label exportOutput;
 

@@ -24,7 +24,7 @@ public class NewYorkStylePizzaOrderingController {
     @FXML
     private ImageView NewYorkStyleTemp;
     @FXML
-    private ChoiceBox<String> pizzaFlavor;
+    private ComboBox<String> pizzaFlavor;
     @FXML
     private RadioButton smallPizza;
     @FXML
@@ -50,22 +50,14 @@ public class NewYorkStylePizzaOrderingController {
 
     @FXML
     public void initialize() {
-        CurrentOrderViewController currentController = new CurrentOrderViewController();
         pizzaFlavor.getItems().addAll("Build Your Own!", "Deluxe!", "BBQ Chicken!", "Meatzza");
         pizzaFlavor.setOnAction((actionEvent) ->{
             pizzaSize.selectToggle(smallPizza);
-            switch (pizzaFlavor.getSelectionModel().getSelectedItem()){
-                case "Deluxe!":
-                    initializeDeluxe();
-                    break;
-                case "BBQ Chicken!":
-                    initializeBBQ();
-                    break;
-                case "Meatzza":
-                    initializeMeatzza();
-                    break;
-                case "Build Your Own!":
-                    initializeBuildYourOwn();
+            switch (pizzaFlavor.getSelectionModel().getSelectedItem()) {
+                case "Deluxe!" -> initializeDeluxe();
+                case "BBQ Chicken!" -> initializeBBQ();
+                case "Meatzza" -> initializeMeatzza();
+                case "Build Your Own!" -> initializeBuildYourOwn();
             }
         });
         pizzaFlavor.getSelectionModel().select(0);
