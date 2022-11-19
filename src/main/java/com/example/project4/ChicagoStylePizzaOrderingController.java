@@ -59,8 +59,7 @@ public class ChicagoStylePizzaOrderingController {
                 case "Build Your Own!" -> initializeBuildYourOwn();
             }
         });
-        //pizzaFlavor.getSelectionModel().select(0);
-
+        pizzaFlavor.getSelectionModel().select(0);
     }
 
     public void setMainViewController (MainViewController mainViewController){
