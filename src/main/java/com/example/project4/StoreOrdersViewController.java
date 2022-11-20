@@ -71,6 +71,9 @@ public class StoreOrdersViewController {
     }
 
     public void exportStoreOrdersClick(ActionEvent actionEvent) throws IOException {
+        if (orderNumber.getValue() == null){
+            return;
+        }
         exportOutput.setText("Exported to document!");
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(e -> exportOutput.setText(null));

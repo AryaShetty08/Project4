@@ -60,6 +60,8 @@ public class ChicagoStylePizzaOrderingController {
             }
         });
         pizzaFlavor.getSelectionModel().select(0);
+        pizzaSize.selectToggle(smallPizza);
+        initializeBuildYourOwn();
     }
 
     public void setMainViewController (MainViewController mainViewController){

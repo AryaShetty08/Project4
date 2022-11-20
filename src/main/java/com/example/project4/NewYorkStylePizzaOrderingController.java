@@ -61,6 +61,8 @@ public class NewYorkStylePizzaOrderingController {
             }
         });
         pizzaFlavor.getSelectionModel().select(0);
+        pizzaSize.selectToggle(smallPizza);
+        initializeBuildYourOwn();
     }
 
     public void setMainViewController (MainViewController mainViewController){
