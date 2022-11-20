@@ -1,22 +1,19 @@
 package com.example.project4;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import pizzaManager.*;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-
+/**
+ * Controller class for Chicago Style Pizza Ordering View
+ * Connects GUI inputs to Pizza Factory class
+ * @author Arya Shetty, John Greaney-Cheng
+ */
 public class ChicagoStylePizzaOrderingController {
     private MainViewController mainViewController;
     private PizzaFactory pizzaFactory;
@@ -45,8 +42,15 @@ public class ChicagoStylePizzaOrderingController {
     @FXML
     private Label addOutput;
 
+    /**
+     * Creates a ChicagoStylePizzaOrderingController object
+     */
     public ChicagoStylePizzaOrderingController(){this.pizzaFactory = new ChicagoPizza();}
 
+    /**
+     * Initializes Pizza Flavors ComboBox values and adds a listener
+     * Initializes size radio button, and chosen pizza flavor ComboBox value
+     */
     @FXML
     public void initialize() {
         pizzaFlavor.getItems().addAll("Build Your Own!", "Deluxe!", "BBQ Chicken!", "Meatzza");
@@ -64,10 +68,17 @@ public class ChicagoStylePizzaOrderingController {
         initializeBuildYourOwn();
     }
 
+    /**
+     * Allows this controller to access main view controller
+     * @param mainViewController controller that connects all fxml controllers
+     */
     public void setMainViewController (MainViewController mainViewController){
         this.mainViewController = mainViewController;
     }
 
+    /**
+     * Updates size of pizza based off of size radio buttons
+     */
     @FXML
     public void sizeClick() {
         if (smallPizza.isSelected()){
@@ -80,6 +91,12 @@ public class ChicagoStylePizzaOrderingController {
         pizzaPrice.setText(String.valueOf(orderInProgress.price()));
     }
 
+    /**
+     * Adds Topping to pizza
+     * First checks that pizza is build your own pizza
+     * If topping can be added to pizza, adds topping and
+     * moves topping from available toppings to selected toppings
+     */
     @FXML
     public void addTopping(){
         if (!(availableTop.getSelectionModel().getSelectedItem() == null) && orderInProgress instanceof BuildYourOwn){
@@ -93,6 +110,12 @@ public class ChicagoStylePizzaOrderingController {
         }
     }
 
+    /**
+     * Removes Topping from pizza
+     * First checks that pizza is build your own pizza
+     * If topping can be removed from pizza, removes topping and
+     * moves topping from selected toppings to available toppings
+     */
     @FXML
     public void removeTopping(){
         if (!(selectedTop.getSelectionModel().getSelectedItem() == null) && orderInProgress instanceof BuildYourOwn){
@@ -106,6 +129,10 @@ public class ChicagoStylePizzaOrderingController {
         }
     }
 
+    /**
+     * Private helper method to reset everything and go to a new Deluxe Pizza
+     * Edits image, toppings, resets size, and edits crust and price text boxes
+     */
     private void initializeDeluxe(){
         ChicagoStyleTemp.setImage(new Image("deluxepizzaChicago.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createDeluxe();
@@ -114,11 +141,15 @@ public class ChicagoStylePizzaOrderingController {
         selectedTop.getItems().addAll(orderInProgress.getToppings());
         selectedTop.setDisable(true);
         availableTop.getItems().clear();
-        availableTop.getItems().addAll(getSelectedToppings(orderInProgress.getToppings()));
+        availableTop.getItems().addAll(getAvailableToppings(orderInProgress.getToppings()));
         availableTop.setDisable(true);
         pizzaPrice.setText(String.valueOf(orderInProgress.price()));
     }
 
+    /**
+     * Private helper method to reset everything and go to a new BBQ Chicken Pizza
+     * Edits image, toppings, resets size, and edits crust and price text boxes
+     */
     private void initializeBBQ(){
         ChicagoStyleTemp.setImage(new Image("BBQChickenChicago.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createBBQChicken();
@@ -127,11 +158,15 @@ public class ChicagoStylePizzaOrderingController {
         selectedTop.getItems().addAll(orderInProgress.getToppings());
         selectedTop.setDisable(true);
         availableTop.getItems().clear();
-        availableTop.getItems().addAll(getSelectedToppings(orderInProgress.getToppings()));
+        availableTop.getItems().addAll(getAvailableToppings(orderInProgress.getToppings()));
         availableTop.setDisable(true);
         pizzaPrice.setText(String.valueOf(orderInProgress.price()));
     }
 
+    /**
+     * Private helper method to reset everything and go to a new Meatzza Pizza
+     * Edits image, toppings, resets size, and edits crust and price text boxes
+     */
     private void initializeMeatzza(){
         ChicagoStyleTemp.setImage(new Image("meatzzaChicago.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createMeatzza();
@@ -140,11 +175,15 @@ public class ChicagoStylePizzaOrderingController {
         selectedTop.getItems().addAll(orderInProgress.getToppings());
         selectedTop.setDisable(true);
         availableTop.getItems().clear();
-        availableTop.getItems().addAll(getSelectedToppings(orderInProgress.getToppings()));
+        availableTop.getItems().addAll(getAvailableToppings(orderInProgress.getToppings()));
         availableTop.setDisable(true);
         pizzaPrice.setText(String.valueOf(orderInProgress.price()));
     }
 
+    /**
+     * Private helper method to reset everything and go to a new Build Your Own Pizza
+     * Edits image, toppings, resets size, and edits crust and price text boxes
+     */
     private void initializeBuildYourOwn(){
         ChicagoStyleTemp.setImage(new Image("chicagopizzaimagebuildyourown.jpg", 285, 215, false, false));
         orderInProgress = pizzaFactory.createBuildYourOwn();
@@ -153,21 +192,31 @@ public class ChicagoStylePizzaOrderingController {
         selectedTop.getItems().addAll(orderInProgress.getToppings());
         selectedTop.setDisable(false);
         availableTop.getItems().clear();
-        availableTop.getItems().addAll(getSelectedToppings(orderInProgress.getToppings()));
+        availableTop.getItems().addAll(getAvailableToppings(orderInProgress.getToppings()));
         availableTop.setDisable(false);
         pizzaPrice.setText(String.valueOf(orderInProgress.price()));
     }
 
-    private ArrayList<Topping> getSelectedToppings (ArrayList<Topping> availableToppings){
-        ArrayList<Topping> selectedToppings = new ArrayList<Topping>();
+    /**
+     * Private helper method to determine available toppings from selected toppings
+     * Essentially adds every topping from enum that isn't in selected toppings
+     * @param selectedToppings selected toppings list (should not be in available)
+     * @return available toppings
+     */
+    private ArrayList<Topping> getAvailableToppings (ArrayList<Topping> selectedToppings){
+        ArrayList<Topping> availableToppings = new ArrayList<Topping>();
         for (Topping topping: Topping.values()){
-            if (!availableToppings.contains(topping)){
-                selectedToppings.add(topping);
+            if (!selectedToppings.contains(topping)){
+                availableToppings.add(topping);
             }
         }
-        return selectedToppings;
+        return availableToppings;
     }
 
+    /**
+     * Takes current pizzaInProgress and adds it to Order
+     * Resets everything and sends pizza to CurrentOrderViewController
+     */
     @FXML
     public void addToOrderClick(){
         addOutput.setText("Added pizza!");
