@@ -104,6 +104,7 @@ public class StoreOrdersViewController {
      * otherwise it calls export method from store order,
      * and it runs an animation displaying whether the document exported or not,
      * which is why there is an exception
+     * @throws IOException throws IOException to check pause transition exceptions
      */
     public void exportStoreOrdersClick() throws IOException {
         if (orderNumber.getValue() == null){

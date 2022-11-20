@@ -2,6 +2,7 @@ package pizzaManager;
 
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -14,6 +15,7 @@ import java.io.File;
  */
 public class StoreOrder implements Customizable{
     private ArrayList<Order> orderList;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
      * Creates a StoreOrder object
@@ -80,7 +82,7 @@ public class StoreOrder implements Customizable{
         for (Pizza pizza: orderToExport.getPizzaList()){
             pw.println(pizza.toString());
         }
-        pw.println("Order Total: $" + orderToExport.getTotal() + "\n");
+        pw.println("Order Total: $" + df.format(orderToExport.getTotal()) + "\n");
         pw.close();
     }
 }

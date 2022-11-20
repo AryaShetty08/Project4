@@ -4,13 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pizzaManager.Order;
+import pizzaManager.Pizza;
+
 import java.io.IOException;
-import pizzaManager.*;
 
 public class MainViewController {
     private ChicagoStylePizzaOrderingController chicagoPizzaController;
@@ -35,6 +36,7 @@ public class MainViewController {
      * Connects GUI inputs to Pizza Factory class
      * And makes sure all connections to other views is optimized
      * By creating stages, scenes, and parents from this class for the other views
+     * @throws IOException throws IOException to check fxmlLoader exceptions
      * @author Arya Shetty, John Greaney-Cheng
      */
     public MainViewController() throws IOException {
@@ -125,6 +127,7 @@ public class MainViewController {
     /**
      * Method is used to translate data between the Chicago Pizza and New York Pizza scenes
      * to add a Pizza to Current Order List, which updates GUI elements in addOrder
+     * @param pizza, pizza created to add to Current Order scene
      */
     public void addToOrderList(Pizza pizza){
         orderViewController.addOrder(pizza);
@@ -133,6 +136,7 @@ public class MainViewController {
     /**
      * Method is used to translate data between the Current Order Scene
      * to add an entire order to Store Order List, which updates GUI elements in addOrder
+     * @param order, order created to add to Store Order scene
      */
     public void addToStoreOrder(Order order){
         storeOrdersViewController.addOrder(order);
