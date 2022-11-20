@@ -30,6 +30,13 @@ public class MainViewController {
     @FXML
     private ImageView CurrentOrderImage;
 
+    /**
+     * Controller class for Main View
+     * Connects GUI inputs to Pizza Factory class
+     * And makes sure all connections to other views is optimized
+     * By creating stages, scenes, and parents from this class for the other views
+     * @author Arya Shetty, John Greaney-Cheng
+     */
     public MainViewController() throws IOException {
         FXMLLoader chicagoLoader = new FXMLLoader(getClass().getResource("Chicago-Style-Pizza-Ordering-View.fxml"));
         Parent chicagoRoot = chicagoLoader.load();
@@ -56,6 +63,9 @@ public class MainViewController {
         storeOrderScene = new Scene(storeOrderRoot);
     }
 
+    /**
+     * Initializes all Images User to be able to click and choose what scene to go to
+     */
     @FXML
     public void initialize() {
         chicagoPizzaImage.setImage(new Image("chicagopizzaimage.jpg", 285, 215, false, false));
@@ -64,7 +74,11 @@ public class MainViewController {
         CurrentOrderImage.setImage(new Image("currentorderimage.jpg", 285, 215, false, false));
     }
 
-    public void switchChicago(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    /**
+     * Creates new window for Chicago after the Chicago Image is clicked
+     * The stage and scene are set for the Chicago View
+     */
+    public void switchChicago() {
         Stage stage = new Stage();
         stage.setTitle("Chicago Pizza Order View!");
         stage.setScene(chicagoScene);
@@ -72,7 +86,11 @@ public class MainViewController {
         stage.show();
     }
 
-    public void switchNewYork(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    /**
+     * Creates new window for New York after the New York Image is clicked
+     * The stage and scene are set for the New York View
+     */
+    public void switchNewYork() {
         Stage stage = new Stage();
         stage.setTitle("New York Pizza Order View!");
         stage.setScene(newYorkScene);
@@ -80,7 +98,11 @@ public class MainViewController {
         stage.show();
     }
 
-    public void switchCurrentOrder(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    /**
+     * Creates new window for Current Order after the Current Order Image is clicked
+     * The stage and scene are set for the CurrentOrder View
+     */
+    public void switchCurrentOrder() {
         Stage stage = new Stage();
         stage.setTitle("Current Order View!");
         stage.setScene(orderScene);
@@ -88,7 +110,11 @@ public class MainViewController {
         stage.show();
     }
 
-    public void switchStoreOrders(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    /**
+     * Creates new window for Store Orders after the Store Image is clicked
+     * The stage and scene are set for the StoreOrders View
+     */
+    public void switchStoreOrders() {
         Stage stage = new Stage();
         stage.setTitle("Store Orders View!");
         stage.setScene(storeOrderScene);
@@ -96,9 +122,18 @@ public class MainViewController {
         stage.show();
     }
 
+    /**
+     * Method is used to translate data between the Chicago Pizza and New York Pizza scenes
+     * to add a Pizza to Current Order List, which updates GUI elements in addOrder
+     */
     public void addToOrderList(Pizza pizza){
         orderViewController.addOrder(pizza);
     }
+
+    /**
+     * Method is used to translate data between the Current Order Scene
+     * to add an entire order to Store Order List, which updates GUI elements in addOrder
+     */
     public void addToStoreOrder(Order order){
         storeOrdersViewController.addOrder(order);
     }

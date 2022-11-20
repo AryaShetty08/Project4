@@ -63,7 +63,7 @@ public class ChicagoStylePizzaOrderingController {
                 case "Build Your Own!" -> initializeBuildYourOwn();
             }
         });
-        pizzaFlavor.getSelectionModel().select(0);
+        pizzaFlavor.getSelectionModel().selectFirst();
         pizzaSize.selectToggle(smallPizza);
         initializeBuildYourOwn();
     }
